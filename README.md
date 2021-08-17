@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- リポジトリ名を変更 [#1](https://github.com/ryo-i/beat-player/issues/1)
+- Nextアプリスターターキットの内容を移植 [#2](https://github.com/ryo-i/beat-player/issues/2)
