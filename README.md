@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- tone.jsをインストール [#3](https://github.com/ryo-i/beat-player/issues/3)
+- tone.jsをインポート（音鳴らず。。） [#3](https://github.com/ryo-i/beat-player/issues/3)

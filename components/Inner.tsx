@@ -1,6 +1,7 @@
 import React, { useEffect }  from 'react';
 import { hello } from '../modules/hello/hello';
 import Data from '../data/data.json';
+import * as Tone from 'tone';
 
 
 const innerJson = Data.inner;
@@ -10,6 +11,13 @@ const innerJson = Data.inner;
 function Inner() {
   useEffect(() => {
     hello();
+
+    // Tone.js Test
+    //create a synth and connect it to the main output (your speakers)
+    const synth = new Tone.Synth().toDestination();
+
+    //play a middle 'C' for the duration of an 8th note
+    synth.triggerAttackRelease("C4", "8n");
   });
 
   return (
