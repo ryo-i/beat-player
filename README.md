@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- titleとh1のテキストを変更 [#2](https://github.com/ryo-i/beat-player/issues/2)
+- tone.jsをインストール [#3](https://github.com/ryo-i/beat-player/issues/3)
