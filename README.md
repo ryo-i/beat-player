@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- Nextアプリスターターキットの内容を移植 [#2](https://github.com/ryo-i/beat-player/issues/2)
+- titleとh1のテキストを変更 [#2](https://github.com/ryo-i/beat-player/issues/2)
