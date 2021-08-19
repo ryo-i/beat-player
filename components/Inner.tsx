@@ -9,19 +9,24 @@ const innerJson = Data.inner;
 // Component
 function Inner() {
   useEffect(() => {
-    // Tone.js Test
+    // ページ読み込み時の処理
+  });
+
+
+  // Tone.js Test
+  const toneJsTest = () => {
     //create a synth and connect it to the main output (your speakers)
     const synth = new Tone.Synth().toDestination();
 
     //play a middle 'C' for the duration of an 8th note
     synth.triggerAttackRelease("C4", "8n");
-  });
+  };
 
   return (
     <>
       <section>
-            <h2>内容が無いよう</h2>
-            <p>へんじがない、ただのしかばねのようだ。</p>
+            <h2>Tone.jsテスト</h2>
+            <button onClick={toneJsTest}>音を鳴らす♪</button>
       </section>
     </>
   );
