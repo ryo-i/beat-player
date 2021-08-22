@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- HTML、CSS部分を移植 [#3](https://github.com/ryo-i/beat-player/issues/3)
+- テストコードを削除 [#3](https://github.com/ryo-i/beat-player/issues/3)
