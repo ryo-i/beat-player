@@ -6,4 +6,4 @@
 
 ## 進捗
 
-- テストコードを削除 [#3](https://github.com/ryo-i/beat-player/issues/3)
+- CSSスタイルを入れ子に [#6](https://github.com/ryo-i/beat-player/issues/6)

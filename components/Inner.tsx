@@ -32,11 +32,10 @@ const BeatPlayer = styled.section`
       margin: 0 auto;
       position: relative;
       font-size:30px;
-    }
-
-    #pad:hover,
-    input:hover {
-      cursor: pointer;
+      :hover,
+      input:hover {
+        cursor: pointer;
+      }
     }
 
     li {
@@ -51,10 +50,9 @@ const BeatPlayer = styled.section`
       display: inline-block;
       color: #fff;
       box-shadow: 5px 5px 5px rgba(0,0,0, 0.3);
-    }
-
-    li:hover {
-      opacity: 0.7;
+      :hover {
+        opacity: 0.7;
+      }
     }
 
     .b_key {
@@ -84,14 +82,12 @@ const BeatPlayer = styled.section`
       max-width: 300px;
       width: 100%;
       margin: 0 auto;
-    }
-
-    .setting label {
-      display: inline-block;
-    }
-
-    .setting input {
-      margin-bottom: 15px;
+      label {
+        display: inline-block;
+      }
+      input {
+        margin-bottom: 15px;
+      }
     }
   }
 `;
