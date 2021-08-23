@@ -6,4 +6,5 @@
 
 ## 進捗
 
+- JSコード移植（エラーあり） [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSSスタイルを入れ子に [#6](https://github.com/ryo-i/beat-player/issues/6)
