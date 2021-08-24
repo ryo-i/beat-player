@@ -10,16 +10,112 @@
         "title":"メインページです",
         "text": "メインページのテキストです。テキストですったらテキストです。"
     },
-    "inner": [
-        {
-        "title": "CSS（文字色）",
-        "text": "CSSでタイトルの文字色変更。"
+    "inner": {
+        "beatPlay" : "▶︎",
+        "bpm": {
+            "range": 120
         },
-        {
-        "title": "JS（文字列）",
-        "text": "JSでテキストの文字列追加「<span class='hello'></span>」"
+        "beat": {
+            "beat1": {
+                "value": "1拍子",
+                "beatNumber": 1,
+                "kickRhythm": [0],
+                "snareRhythm": [],
+                "shaffle": false
+            },
+            "beat2": {
+                "value": "2拍子",
+                "beatNumber": 2,
+                "kickRhythm": [0],
+                "snareRhythm": [1],
+                "shaffle": false
+            },
+            "beat3": {
+                "value": "3拍子",
+                "beatNumber": 3,
+                "kickRhythm": [0],
+                "snareRhythm": [1, 2],
+                "shaffle": false
+            },
+            "beat4": {
+                "value": "4拍子",
+                "beatNumber": 4,
+                "kickRhythm": [0, 2],
+                "snareRhythm": [1, 3],
+                "shaffle": false
+            },
+            "beat5": {
+                "value": "5拍子",
+                "beatNumber": 5,
+                "kickRhythm": [0],
+                "snareRhythm": [3],
+                "shaffle": false
+            },
+            "beat6": {
+                "value": "6拍子",
+                "beatNumber": 6,
+                "kickRhythm": [0],
+                "snareRhythm": [3],
+                "shaffle": false
+            },
+            "beat7": {
+                "value": "7拍子",
+                "beatNumber": 7,
+                "kickRhythm": [0, 4],
+                "snareRhythm": [2, 6],
+                "shaffle": false
+            },
+            "beat8": {
+                "value": "8拍子",
+                "beatNumber": 8,
+                "kickRhythm": [0, 4],
+                "snareRhythm": [2, 6],
+                "shaffle": false
+            },
+            "beat12": {
+                "value": "12拍子",
+                "beatNumber": 12,
+                "kickRhythm": [0, 6],
+                "snareRhythm": [3, 9],
+                "shaffle": false
+            },
+            "beatShuffle": {
+                "value": "シャッフル",
+                "beatNumber": 12,
+                "kickRhythm": [0, 6],
+                "snareRhythm": [3, 9],
+                "shaffle": true
+            },
+            "beat16": {
+                "value": "16拍子",
+                "beatNumber": 16,
+                "kickRhythm": [0, 8],
+                "snareRhythm": [4, 12],
+                "shaffle": false
+            },
+            "beat24": {
+                "value": "24拍子",
+                "beatNumber": 24,
+                "kickRhythm": [0, 12],
+                "snareRhythm": [6, 18],
+                "shaffle": false
+            },
+            "beatSwing16": {
+                "value": "ハネた16",
+                "beatNumber": 24,
+                "kickRhythm": [0, 12],
+                "snareRhythm": [6, 18],
+                "shaffle": true
+            },
+            "beat32": {
+                "value": "32拍子",
+                "beatNumber": 32,
+                "kickRhythm": [0, 16],
+                "snareRhythm": [8, 24],
+                "shaffle": false
+            }
         }
-    ],
+    },
     "footer": {
         "text": "©️ イイダリョウ"
     }

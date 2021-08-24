@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import styled from 'styled-components';
 import Data from '../data/data.json';
 import * as Tone from 'tone';
@@ -100,12 +100,18 @@ function Inner() {
   });
 
 
+  // Hooks
+  const [bpmRange, setBpmRange] = useState(innerJson.bpm.range);
+  const [beatValue, setBeatValue] = useState(innerJson.beat.beat8.value);
+  const [beatPlay, setBeatPlay] = useState(innerJson.beatPlay);
+
+
   // DOM
-  const beat = document.querySelector('#beat');
+  /* const beat = document.querySelector('#beat');
   const BPMVal = document.querySelector('.bpm .val');
   const BPMRange = document.querySelector('.bpm .range');
   const rythmVal = document.querySelector('.rhythm .val');
-  const rythmRadio = document.querySelectorAll('.rhythm input[name="beat"]');
+  const rythmRadio = document.querySelectorAll('.rhythm input[name="beat"]'); */
 
 
   // エンベロープ（キック）
@@ -161,7 +167,7 @@ function Inner() {
 
 
   // リズム設定値
-  let rhythmData = [
+  /* let rhythmData = [
     {
       value: '1拍子',
       beatNumber: 1,
@@ -248,12 +254,13 @@ function Inner() {
       kickRhythm: [0, 16],
       snareRhythm: [8, 24]
     },
-  ];
+  ]; */
 
 
   // リズム取得
-  let getRhythmData = (i) => {
-    let data = rhythmData[i];
+  let getRhythmData = (className) => {
+    // let data = rhythmData[i];
+    let data = innerJson.beat[className];
     let beatLen = 4 / data.beatNumber;
     return {
       data: data,
@@ -292,9 +299,10 @@ function Inner() {
 
 
   // ビートリズム設定
-  let setBeatRhythm = (i) => {
-    let data = getRhythmData(i);
-    rythmVal.innerHTML = data.beatVal;
+  let setBeatRhythm = (className) => {
+    let data = getRhythmData(className);
+    // rythmVal.innerHTML = data.beatVal;
+    setBeatValue(data.beatVal);
     const beatNum = data.beatNum;
     const beatLen = data.beatLen;
     const kickRhythm = data.kickRhythm;
@@ -320,7 +328,7 @@ function Inner() {
 
 
   // ビート初期値
-  let defRhythm = setBeatRhythm(7);
+  let defRhythm = setBeatRhythm("beat8");
   playBeat(defRhythm.kick, defRhythm.snare, defRhythm.hihat);
 
 
@@ -329,14 +337,16 @@ function Inner() {
 
 
   // 再生ボタン
-  let beatPlay = () => {
+  let changeBeatPlay = () => {
       if(play){
         play = false;
-        beat.innerHTML = "▶︎";
+        // beat.innerHTML = "▶︎";
+        setBeatPlay("▶︎");
         Tone.Transport.stop();
       } else {
         play = true;
-        beat.innerHTML = "■";
+        // beat.innerHTML = "■";
+        setBeatPlay("■");
         Tone.Transport.start();
       }
   };
@@ -344,10 +354,11 @@ function Inner() {
 
 
   // BPM設定
-  let setBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let BPMImput: string = e.target.value;
-    BPMVal.innerHTML = BPMImput;
-    Tone.Transport.bpm.value = Number(BPMImput);
+  let changeBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const BPMImput: number = Number(e.target.value);
+    // BPMVal.innerHTML = BPMImput;
+    setBpmRange(BPMImput);
+    Tone.Transport.bpm.value = BPMImput;
   }
   // BPMSet();
 
@@ -356,14 +367,20 @@ function Inner() {
 
 
   // リズム変更
-  const selectRythm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    for(let i = 0; i < rhythmData.length; i++){
+  const changeRythm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const getClassName: string = String(e.target.className);
+    const getValue: string = String(e.target.value);
+    // for(let i = 0; i < rhythmData.length; i++){
       // rythmRadio[i].addEventListener('input', ()=> {
-        let beat = setBeatRhythm(i);
+        let beat = setBeatRhythm(getClassName);
         const kick = beat.kick;
         const snare = beat.snare;
         const hihat = beat.hihat;
-        if((rythmRadio[i] as HTMLInputElement).checked && play ) {
+
+        setBeatValue(getValue);
+
+        // const thisValue = (rythmRadio[i] as HTMLInputElement).value;
+        if(play) {
           Tone.Transport.cancel();
           Tone.Transport.start();
           playBeat(kick, snare, hihat);
@@ -372,7 +389,7 @@ function Inner() {
           playBeat(kick, snare, hihat);
         }
       // }, false);
-    }
+    //}
   }
   // selectRythm();
 
@@ -383,29 +400,29 @@ function Inner() {
       <BeatPlayer>
         <h1>Beat Player</h1>
         <ul id="pad">
-          <li id="beat" onClick={beatPlay}>▶︎</li>
+          <li id="beat" onClick={changeBeatPlay}>{beatPlay}</li>
         </ul>
         <div className="setting">
           <section className="bpm">
-            <h2>BPM: <span className="val"></span></h2>
-            <input type="range" name="range" min="30" max="240" value="120" className="range" onChange={setBpm} />
+            <h2>BPM: <span className="val">{bpmRange}</span></h2>
+            <input type="range" name="range" min="30" max="240" value={bpmRange} className="range" onChange={changeBpm} />
           </section>
           <section className="rhythm">
-            <h2>リズム: <span className="val"></span></h2>
-            <label><input type="radio" name="beat" className="beat1" value="1拍子" onChange={selectRythm}  />1</label>
-            <label><input type="radio" name="beat" className="beat2" value="2拍子" onChange={selectRythm} />2</label>
-            <label><input type="radio" name="beat" className="beat3" value="3拍子" onChange={selectRythm} />3</label>
-            <label><input type="radio" name="beat" className="beat4" value="4拍子" onChange={selectRythm} />4</label>
-            <label><input type="radio" name="beat" className="beat5" value="5拍子" onChange={selectRythm} />5</label>
-            <label><input type="radio" name="beat" className="beat6" value="6拍子" onChange={selectRythm} />6</label>
-            <label><input type="radio" name="beat" className="beat7" value="7拍子" onChange={selectRythm} />7</label>
-            <label><input type="radio" name="beat" className="Beat8" value="8拍子" onChange={selectRythm} defaultChecked />8</label>
-            <label><input type="radio" name="beat" className="beat12" value="12拍子" onChange={selectRythm} />12</label>
-            <label><input type="radio" name="beat" className="beatShuffle" value="シャッフル" onChange={selectRythm} />Shuffle</label>
-            <label><input type="radio" name="beat" className="beat16" value="16拍子" onChange={selectRythm} />16</label>
-            <label><input type="radio" name="beat" className="beat24" value="24拍子" onChange={selectRythm} />24</label>
-            <label><input type="radio" name="beat" className="beatSwing16" value="ハネた16" onChange={selectRythm} />Swing16</label>
-            <label><input type="radio" name="beat" className="beat32" value="32拍子" onChange={selectRythm} />32</label>
+            <h2>リズム: <span className="val">{beatValue}</span></h2>
+            <label><input type="radio" name="beat" className="beat1" value="1拍子" onChange={changeRythm} />1</label>
+            <label><input type="radio" name="beat" className="beat2" value="2拍子" onChange={changeRythm} />2</label>
+            <label><input type="radio" name="beat" className="beat3" value="3拍子" onChange={changeRythm} />3</label>
+            <label><input type="radio" name="beat" className="beat4" value="4拍子" onChange={changeRythm} />4</label>
+            <label><input type="radio" name="beat" className="beat5" value="5拍子" onChange={changeRythm} />5</label>
+            <label><input type="radio" name="beat" className="beat6" value="6拍子" onChange={changeRythm} />6</label>
+            <label><input type="radio" name="beat" className="beat7" value="7拍子" onChange={changeRythm} />7</label>
+            <label><input type="radio" name="beat" className="beat8" value="8拍子" onChange={changeRythm} defaultChecked />8</label>
+            <label><input type="radio" name="beat" className="beat12" value="12拍子" onChange={changeRythm} />12</label>
+            <label><input type="radio" name="beat" className="beatShuffle" value="シャッフル" onChange={changeRythm} />Shuffle</label>
+            <label><input type="radio" name="beat" className="beat16" value="16拍子" onChange={changeRythm} />16</label>
+            <label><input type="radio" name="beat" className="beat24" value="24拍子" onChange={changeRythm} />24</label>
+            <label><input type="radio" name="beat" className="beatSwing16" value="ハネた16" onChange={changeRythm} />Swing16</label>
+            <label><input type="radio" name="beat" className="beat32" value="32拍子" onChange={changeRythm} />32</label>
           </section>
         </div>
       </BeatPlayer>
