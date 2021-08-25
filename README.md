@@ -6,5 +6,5 @@
 
 ## 進捗
 
-- フック設定（エラーあり） [#5](https://github.com/ryo-i/beat-player/issues/5)
+- エラー調査中 [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSSスタイルを入れ子に [#6](https://github.com/ryo-i/beat-player/issues/6)
