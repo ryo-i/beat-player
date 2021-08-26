@@ -114,6 +114,36 @@
                 "snareRhythm": [8, 24],
                 "shaffle": false
             }
+        },
+        "synthParam": {
+            "membraneKickOpts": {
+                "value": "キック",
+                "pitchDecay": 0.001,
+                "envelope": {
+                    "attack": 0.001 ,
+                    "decay": 0.75 ,
+                    "sustain": 0.01 ,
+                    "release": 0.01
+                },
+                "volume": 25
+            },
+            "noiseSnareOpts": {
+                "value": "スネア",
+                "envelope": {
+                    "attack": 0.001 ,
+                    "decay": 0.5 ,
+                    "sustain": 0.01
+                }
+            },
+            "noiseHihatOpts": {
+                "value": "ハイハット",
+                "type": "brown",
+                "envelope": {
+                    "attack": 0.001 ,
+                    "decay": 0.03 ,
+                    "sustain": 0
+                }
+            }
         }
     },
     "footer": {

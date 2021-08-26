@@ -106,40 +106,6 @@ function Inner() {
   const [beatPlay, setBeatPlay] = useState(innerJson.beatPlay);
 
 
-  // エンベロープ（キック）
-  let membraneKickOpts = {
-    pitchDecay: 0.001,
-    envelope: {
-      attack: 0.001 ,
-      decay: 0.75 ,
-      sustain: 0.01 ,
-      release: 0.01
-    },
-    volume: 25
-  }
-
-
-  // エンベロープ（スネア）
-  let noiseSnareOpts = {
-    envelope: {
-      attack: 0.001 ,
-      decay: 0.5 ,
-      sustain: 0.01
-    }
-  }
-
-
-  // エンベロープ（ハイハット）
-  let noiseHihatOpts = {
-    type: "brown",
-    envelope: {
-      attack: 0.001 ,
-      decay: 0.03 ,
-      sustain: 0
-    }
-  }
-
-
   // シンセ生成
   // const membraneKick = new Tone.MembraneSynth(membraneKickOpts).toMaster();
   // const noiseSnare = new Tone.NoiseSynth(noiseSnareOpts).toMaster();
