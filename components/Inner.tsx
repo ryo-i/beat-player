@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import styled from 'styled-components';
 import Data from '../data/data.json';
-// import * as Tone from 'tone';
+import * as Tone from 'tone';
 
 
 const innerJson = Data.inner;
@@ -96,7 +96,12 @@ const BeatPlayer = styled.section`
 // Component
 function Inner() {
   useEffect(() => {
-    // ページ読み込み時の処理
+      //create a synth and connect it to the main output (your speakers)
+      const synth = new Tone.Synth().toDestination();
+
+      //play a middle 'C' for the duration of an 8th note
+      synth.triggerAttackRelease("C4", "8n");
+  // }, []); // 1回実行
   });
 
 
@@ -202,10 +207,10 @@ function Inner() {
   let changeBeatPlay = () => {
       if(beatPlay === "■"){
         setBeatPlay("▶︎");
-        // Tone.Transport.stop();
+        Tone.Transport.stop();
       } else if (beatPlay === "▶︎") {
         setBeatPlay("■");
-        // Tone.Transport.start();
+        Tone.Transport.start();
       }
   };
 

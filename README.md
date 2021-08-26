@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- h1タグの削除、ReadMeの整理など [#6](https://github.com/ryo-i/beat-player/issues/6)
+- 音が鳴るが再生ボタンとinputを触る度になる [#6](https://github.com/ryo-i/beat-player/issues/6)
 - 再生ボタンのフラグ判定をやめる [#5](https://github.com/ryo-i/beat-player/issues/5)
 
 ## ブログ
