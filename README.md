@@ -6,5 +6,5 @@
 
 ## 進捗
 
-- Tone.jsの処理をコメントアウト（エラー消えた！） [#5](https://github.com/ryo-i/beat-player/issues/5)
+- 不要になったコメントアウトを削除 [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSSスタイルを入れ子に [#6](https://github.com/ryo-i/beat-player/issues/6)

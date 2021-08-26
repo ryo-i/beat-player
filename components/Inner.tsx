@@ -106,14 +106,6 @@ function Inner() {
   const [beatPlay, setBeatPlay] = useState(innerJson.beatPlay);
 
 
-  // DOM
-  /* const beat = document.querySelector('#beat');
-  const BPMVal = document.querySelector('.bpm .val');
-  const BPMRange = document.querySelector('.bpm .range');
-  const rythmVal = document.querySelector('.rhythm .val');
-  const rythmRadio = document.querySelectorAll('.rhythm input[name="beat"]'); */
-
-
   // エンベロープ（キック）
   let membraneKickOpts = {
     pitchDecay: 0.001,
@@ -164,97 +156,6 @@ function Inner() {
   const hihatSynth = () => {
     noiseHihat.triggerAttackRelease('32n');
   }; */
-
-
-  // リズム設定値
-  /* let rhythmData = [
-    {
-      value: '1拍子',
-      beatNumber: 1,
-      kickRhythm: [0],
-      snareRhythm: []
-    },
-    {
-      value: '2拍子',
-      beatNumber: 2,
-      kickRhythm: [0],
-      snareRhythm: [1]
-    },
-    {
-      value: '3拍子',
-      beatNumber: 3,
-      kickRhythm: [0],
-      snareRhythm: [1, 2]
-    },
-    {
-      value: '4拍子',
-      beatNumber: 4,
-      kickRhythm: [0, 2],
-      snareRhythm: [1, 3]
-    },
-    {
-      value: '5拍子',
-      beatNumber: 5,
-      kickRhythm: [0],
-      snareRhythm: [3]
-    },
-    {
-      value: '6拍子',
-      beatNumber: 6,
-      kickRhythm: [0],
-      snareRhythm: [3]
-    },
-    {
-      value: '7拍子',
-      beatNumber: 7,
-      kickRhythm: [0, 4],
-      snareRhythm: [2, 6]
-    },
-    {
-      value: '8拍子',
-      beatNumber: 8,
-      kickRhythm: [0, 4],
-      snareRhythm: [2, 6]
-    },
-    {
-      value: '12拍子',
-      beatNumber: 12,
-      kickRhythm: [0, 6],
-      snareRhythm: [3, 9]
-    },
-    {
-      value: 'シャッフル',
-      beatNumber: 12,
-      kickRhythm: [0, 6],
-      snareRhythm: [3, 9],
-      shaffle: true
-    },
-    {
-      value: '16拍子',
-      beatNumber: 16,
-      kickRhythm: [0, 8],
-      snareRhythm: [4, 12]
-    },
-    {
-      value: '24拍子',
-      beatNumber: 24,
-      kickRhythm: [0, 12],
-      snareRhythm: [6, 18]
-    },
-    {
-      value: 'ハネた16',
-      beatNumber: 24,
-      kickRhythm: [0, 12],
-      snareRhythm: [6, 18],
-      shaffle: true
-    },
-    {
-      value: '32拍子',
-      beatNumber: 32,
-      kickRhythm: [0, 16],
-      snareRhythm: [8, 24]
-    },
-  ]; */
 
 
   // リズム取得
