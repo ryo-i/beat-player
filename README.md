@@ -6,5 +6,5 @@
 
 ## 進捗
 
-- シンセの設定値をJSONファイルに移動 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- 再生ボタンのフラグ判定をやめる [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSSスタイルを入れ子に [#6](https://github.com/ryo-i/beat-player/issues/6)

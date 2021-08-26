@@ -168,7 +168,6 @@ function Inner() {
   // ビートリズム設定
   let setBeatRhythm = (className) => {
     let data = getRhythmData(className);
-    // rythmVal.innerHTML = data.beatVal;
     setBeatValue(data.beatVal);
     const beatNum = data.beatNum;
     const beatLen = data.beatLen;
@@ -199,20 +198,12 @@ function Inner() {
   // playBeat(defRhythm.kick, defRhythm.snare, defRhythm.hihat);
 
 
-  // 再生判定
-  let play = false;
-
-
   // 再生ボタン
   let changeBeatPlay = () => {
-      if(play){
-        play = false;
-        // beat.innerHTML = "▶︎";
+      if(beatPlay === "■"){
         setBeatPlay("▶︎");
         // Tone.Transport.stop();
-      } else {
-        play = true;
-        // beat.innerHTML = "■";
+      } else if (beatPlay === "▶︎") {
         setBeatPlay("■");
         // Tone.Transport.start();
       }
@@ -223,7 +214,6 @@ function Inner() {
   // BPM設定
   let changeBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const BPMImput: number = Number(e.target.value);
-    // BPMVal.innerHTML = BPMImput;
     setBpmRange(BPMImput);
     // Tone.Transport.bpm.value = BPMImput;
   }
@@ -247,11 +237,11 @@ function Inner() {
         setBeatValue(getValue);
 
         // const thisValue = (rythmRadio[i] as HTMLInputElement).value;
-        if(play) {
+        if(beatPlay === "■") {
           // Tone.Transport.cancel();
           // Tone.Transport.start();
           // playBeat(kick, snare, hihat);
-        } else {
+        } else if (beatPlay === "▶︎") {
           // Tone.Transport.cancel();
           // playBeat(kick, snare, hihat);
         }
