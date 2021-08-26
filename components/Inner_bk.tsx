@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import styled from 'styled-components';
 import Data from '../data/data.json';
-// import * as Tone from 'tone';
+import * as Tone from 'tone';
 
 
 const innerJson = Data.inner;
@@ -149,13 +149,13 @@ function Inner() {
 
 
   // シンセ生成
-  // const membraneKick = new Tone.MembraneSynth(membraneKickOpts).toMaster();
-  // const noiseSnare = new Tone.NoiseSynth(noiseSnareOpts).toMaster();
-  // const noiseHihat = new Tone.NoiseSynth(noiseHihatOpts).toMaster();
+  const membraneKick = new Tone.MembraneSynth(membraneKickOpts).toMaster();
+  const noiseSnare = new Tone.NoiseSynth(noiseSnareOpts).toMaster();
+  const noiseHihat = new Tone.NoiseSynth(noiseHihatOpts).toMaster();
 
 
   // シンセ実行
-  /* const kickSynth = () => {
+  const kickSynth = () => {
     membraneKick.triggerAttackRelease('C0','2n');
   };
   const snareSynth = () => {
@@ -163,7 +163,7 @@ function Inner() {
   };
   const hihatSynth = () => {
     noiseHihat.triggerAttackRelease('32n');
-  }; */
+  };
 
 
   // リズム設定値
@@ -318,18 +318,18 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-    /* let kickPart = new Tone.Part(kickSynth, kickRtm).start();
+    let kickPart = new Tone.Part(kickSynth, kickRtm).start();
     let snarePart = new Tone.Part(snareSynth, snareRtm).start()
     let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
     kickPart.loop = true;
     snarePart.loop = true;
-    hihatPart.loop = true; */
+    hihatPart.loop = true;
   }
 
 
   // ビート初期値
-  // let defRhythm = setBeatRhythm("beat8");
-  // playBeat(defRhythm.kick, defRhythm.snare, defRhythm.hihat);
+  let defRhythm = setBeatRhythm("beat8");
+  playBeat(defRhythm.kick, defRhythm.snare, defRhythm.hihat);
 
 
   // 再生判定
@@ -342,12 +342,12 @@ function Inner() {
         play = false;
         // beat.innerHTML = "▶︎";
         setBeatPlay("▶︎");
-        // Tone.Transport.stop();
+        Tone.Transport.stop();
       } else {
         play = true;
         // beat.innerHTML = "■";
         setBeatPlay("■");
-        // Tone.Transport.start();
+        Tone.Transport.start();
       }
   };
 
@@ -358,7 +358,7 @@ function Inner() {
     const BPMImput: number = Number(e.target.value);
     // BPMVal.innerHTML = BPMImput;
     setBpmRange(BPMImput);
-    // Tone.Transport.bpm.value = BPMImput;
+    Tone.Transport.bpm.value = BPMImput;
   }
   // BPMSet();
 
@@ -381,12 +381,12 @@ function Inner() {
 
         // const thisValue = (rythmRadio[i] as HTMLInputElement).value;
         if(play) {
-          // Tone.Transport.cancel();
-          // Tone.Transport.start();
-          // playBeat(kick, snare, hihat);
+          Tone.Transport.cancel();
+          Tone.Transport.start();
+          playBeat(kick, snare, hihat);
         } else {
-          // Tone.Transport.cancel();
-          // playBeat(kick, snare, hihat);
+          Tone.Transport.cancel();
+          playBeat(kick, snare, hihat);
         }
       // }, false);
     //}
