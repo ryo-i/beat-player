@@ -100,6 +100,7 @@ function Inner() {
   const [beatValue, setBeatValue] = useState(innerJson.beat.beat8.value);
   const [beatPlay, setBeatPlay] = useState(innerJson.beatPlay);
 
+
   // シンセ生成
   let membraneKick, noiseSnare, noiseHihat;
   useEffect(() => {
@@ -138,7 +139,7 @@ function Inner() {
 
 
   // キック、スネアリズム設定
-  const setRhythm = (beatNmb, beatLen, Array) => {
+  const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
       rhythm.push('0:' + beatLen * Array[i] + ':0');
@@ -171,8 +172,8 @@ function Inner() {
     const snareRhythm = data.snareRhythm;
     const shaffle = data.shaffle;
     return {
-      kick: setRhythm(beatNum, beatLen, kickRhythm),
-      snare: setRhythm(beatNum, beatLen, snareRhythm),
+      kick: setRhythm(beatLen, kickRhythm),
+      snare: setRhythm(beatLen, snareRhythm),
       hihat: setHihatRhythm(beatNum, beatLen, shaffle)
     }
   };
@@ -213,9 +214,7 @@ function Inner() {
   let changeBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const BPMImput: number = Number(e.target.value);
     setBpmRange(BPMImput);
-    useEffect(() => {
-      Tone.Transport.bpm.value = BPMImput;
-    }, []);
+    Tone.Transport.bpm.value = BPMImput;
   }
 
 
@@ -223,30 +222,22 @@ function Inner() {
   const changeRythm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const getClassName: string = String(e.target.className);
     const getValue: string = String(e.target.value);
-    // for(let i = 0; i < rhythmData.length; i++){
-      // rythmRadio[i].addEventListener('input', ()=> {
-        let beat = setBeatRhythm(getClassName);
-        const kick = beat.kick;
-        const snare = beat.snare;
-        const hihat = beat.hihat;
 
-        setBeatValue(getValue);
+    let beat = setBeatRhythm(getClassName);
+    const kick = beat.kick;
+    const snare = beat.snare;
+    const hihat = beat.hihat;
 
-        // const thisValue = (rythmRadio[i] as HTMLInputElement).value;
-        if(beatPlay === "■") {
-          useEffect(() => {
-            Tone.Transport.cancel();
-            Tone.Transport.start();
-            playBeat(kick, snare, hihat);
-          }, []);
-        } else if (beatPlay === "▶︎") {
-          useEffect(() => {
-            Tone.Transport.cancel();
-            playBeat(kick, snare, hihat);
-          }, []);
-        }
-      // }, false);
-    //}
+    setBeatValue(getValue);
+
+    if(beatPlay === "■") {
+        Tone.Transport.cancel();
+        Tone.Transport.start();
+        playBeat(kick, snare, hihat);
+    } else if (beatPlay === "▶︎") {
+      Tone.Transport.cancel();
+      playBeat(kick, snare, hihat);
+    }
   }
   // selectRythm();
 

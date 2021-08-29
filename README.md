@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- 再生ボタンでビートを鳴らす（設定変更はエラーあり） [#5](https://github.com/ryo-i/beat-player/issues/5)
+- ビート変更もできるようになった（不要なuseEffect()の削除） [#5](https://github.com/ryo-i/beat-player/issues/5)
 - h1タグの削除、ReadMeの整理など [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
