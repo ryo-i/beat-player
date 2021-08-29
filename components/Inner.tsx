@@ -93,14 +93,15 @@ const BeatPlayer = styled.section`
 `;
 
 
+// シンセ設定用の変数宣言
+let synth;
+
+
 // Component
 function Inner() {
   useEffect(() => {
-      //create a synth and connect it to the main output (your speakers)
-      const synth = new Tone.Synth().toDestination();
-
-      //play a middle 'C' for the duration of an 8th note
-      synth.triggerAttackRelease("C4", "8n");
+    //create a synth and connect it to the main output (your speakers)
+    synth = new Tone.Synth().toDestination();
   // }, []); // 1回実行
   });
 
@@ -210,6 +211,8 @@ function Inner() {
         Tone.Transport.stop();
       } else if (beatPlay === "▶︎") {
         setBeatPlay("■");
+        //play a middle 'C' for the duration of an 8th note
+        synth.triggerAttackRelease("C4", "8n");
         Tone.Transport.start();
       }
   };
