@@ -17,12 +17,10 @@ const BeatPlayer = styled.section`
     Arial,Meiryo,
     sans-serif;
     padding: 30px 0;
-
     h1, h2, p {
       color: #fff;
       text-align: center;
     }
-
     #pad {
       background: #333;
       padding: 10px;
@@ -37,7 +35,6 @@ const BeatPlayer = styled.section`
         cursor: pointer;
       }
     }
-
     li {
       margin: 5px;
       background: #666;
@@ -54,7 +51,6 @@ const BeatPlayer = styled.section`
         opacity: 0.7;
       }
     }
-
     .b_key {
       position: absolute;
       z-index: 10;
@@ -69,13 +65,11 @@ const BeatPlayer = styled.section`
       text-align: center;
       display: inline-block;
     }
-
     .range {
       max-width: 300px;
       width: 100%;
       margin: 0 auto;
       }
-
     .setting {
       text-align: center;
       color: #fff;
@@ -111,15 +105,18 @@ function Inner() {
 
 
   // シンセ実行
-  const kickSynth = () => {
-    membraneKick.triggerAttackRelease('C0','2n');
-  };
-  const snareSynth = () => {
-    noiseSnare.triggerAttackRelease('8n');
-  };
-  const hihatSynth = () => {
-    noiseHihat.triggerAttackRelease('32n');
-  };
+  let kickSynth, snareSynth, hihatSynth;
+  useEffect(() => {
+    kickSynth = () => {
+      membraneKick.triggerAttackRelease('C0','2n');
+    };
+    snareSynth = () => {
+      noiseSnare.triggerAttackRelease('8n');
+    };
+    hihatSynth = () => {
+      noiseHihat.triggerAttackRelease('32n');
+    };
+  });
 
 
   // リズム取得
@@ -180,14 +177,18 @@ function Inner() {
 
 
   // ビート再生設定
-  const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-    let kickPart = new Tone.Part(kickSynth, kickRtm).start();
-    let snarePart = new Tone.Part(snareSynth, snareRtm).start()
-    let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
-    kickPart.loop = true;
-    snarePart.loop = true;
-    hihatPart.loop = true;
-  }
+  let playBeat;
+  useEffect(() => {
+    playBeat = (kickRtm, snareRtm, hihatRtm) => {
+      let kickPart = new Tone.Part(kickSynth, kickRtm).start();
+      let snarePart = new Tone.Part(snareSynth, snareRtm).start()
+      let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
+      kickPart.loop = true;
+      snarePart.loop = true;
+      hihatPart.loop = true;
+    }
+  });
+
 
 
   // ビート初期値
@@ -200,21 +201,21 @@ function Inner() {
 
   // 再生ボタン
   let changeBeatPlay = () => {
-      if(beatPlay === "■"){
-        setBeatPlay("▶︎");
-        Tone.Transport.stop();
-      } else if (beatPlay === "▶︎") {
-        setBeatPlay("■");
-        Tone.Transport.start();
-      }
+    if(beatPlay === "■"){
+      setBeatPlay("▶︎");
+      Tone.Transport.stop();
+    } else if (beatPlay === "▶︎") {
+      setBeatPlay("■");
+      Tone.Transport.start();
+    }
   };
 
 
-  // BPM設定
+  // BPM変更
   let changeBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const BPMImput: number = Number(e.target.value);
     setBpmRange(BPMImput);
-    Tone.Transport.bpm.value = BPMImput;
+    Tone.Transport.bpm.value = bpmRange;
   }
 
 
@@ -231,15 +232,14 @@ function Inner() {
     setBeatValue(getValue);
 
     if(beatPlay === "■") {
-        Tone.Transport.cancel();
-        Tone.Transport.start();
-        playBeat(kick, snare, hihat);
+      Tone.Transport.cancel();
+      Tone.Transport.start();
+      playBeat(kick, snare, hihat);
     } else if (beatPlay === "▶︎") {
       Tone.Transport.cancel();
       playBeat(kick, snare, hihat);
     }
   }
-  // selectRythm();
 
 
   // JSX
