@@ -90,9 +90,10 @@ const BeatPlayer = styled.section`
 // Component
 function Inner() {
   // Hooks
-  const [bpmRange, setBpmRange] = useState(innerJson.bpm.range);
-  const [beatValue, setBeatValue] = useState(innerJson.beat.beat8.value);
-  const [beatPlay, setBeatPlay] = useState(innerJson.beatPlay);
+  const [beatPlay, setBeatPlay] = useState(innerJson.settings.beatPlay);
+  const [bpmRange, setBpmRange] = useState(innerJson.settings.bpm);
+  const [beatName, setBeatName] = useState(innerJson.settings.beatName);
+  const [beatValue, setBeatValue] = useState(innerJson.settings.beatValue);
 
 
   // シンセ生成
@@ -121,7 +122,7 @@ function Inner() {
 
   // リズム取得
   let getRhythmData = (className) => {
-    let data = innerJson.beat[className];
+    let data = innerJson.beatParam[className];
     let beatLen = 4 / data.beatNumber;
     return {
       data: data,
@@ -192,10 +193,9 @@ function Inner() {
 
 
   // ビート初期値
-  let defRhythm;
   useEffect(() => {
-    defRhythm = setBeatRhythm("beat8");
-    playBeat(defRhythm.kick, defRhythm.snare, defRhythm.hihat);
+    const defaultRhythm = setBeatRhythm(beatName);
+    playBeat(defaultRhythm.kick, defaultRhythm.snare, defaultRhythm.hihat);
   }, []);
 
 
@@ -215,7 +215,7 @@ function Inner() {
   let changeBpm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const BPMImput: number = Number(e.target.value);
     setBpmRange(BPMImput);
-    Tone.Transport.bpm.value = bpmRange;
+    Tone.Transport.bpm.value = BPMImput;
   }
 
 
@@ -224,12 +224,13 @@ function Inner() {
     const getClassName: string = String(e.target.className);
     const getValue: string = String(e.target.value);
 
+    setBeatName(getClassName);
+    setBeatValue(getValue);
+
     let beat = setBeatRhythm(getClassName);
     const kick = beat.kick;
     const snare = beat.snare;
     const hihat = beat.hihat;
-
-    setBeatValue(getValue);
 
     if(beatPlay === "■") {
       Tone.Transport.cancel();

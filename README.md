@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- コード手直し（挙動は一部おかしいまま？） [#5](https://github.com/ryo-i/beat-player/issues/5)
+- コード手直し、名前変更など [#5](https://github.com/ryo-i/beat-player/issues/5)
 - h1タグの削除、ReadMeの整理など [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
