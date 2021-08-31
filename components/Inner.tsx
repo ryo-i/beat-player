@@ -96,18 +96,13 @@ function Inner() {
   const [beatValue, setBeatValue] = useState(innerJson.settings.beatValue);
 
 
-  // シンセ生成
-  let membraneKick, noiseSnare, noiseHihat;
-  useEffect(() => {
-    membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toMaster();
-    noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toMaster();
-    noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toMaster();
-  });
-
-
-  // シンセ実行
+  // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
-  useEffect(() => {
+  const setSynth = () => {
+    const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toMaster();
+    const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toMaster();
+    const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toMaster();
+
     kickSynth = () => {
       membraneKick.triggerAttackRelease('C0','2n');
     };
@@ -117,7 +112,7 @@ function Inner() {
     hihatSynth = () => {
       noiseHihat.triggerAttackRelease('32n');
     };
-  });
+  };
 
 
   // リズム取得
@@ -161,7 +156,7 @@ function Inner() {
 
 
   // ビートリズム設定
-  let setBeatRhythm = (className) => {
+  const setBeatRhythm = (className) => {
     let data = getRhythmData(className);
     setBeatValue(data.beatVal);
     const beatNum = data.beatNum;
@@ -180,7 +175,7 @@ function Inner() {
   // ビート再生設定
   let playBeat;
   useEffect(() => {
-    playBeat = (kickRtm, snareRtm, hihatRtm) => {
+  const playBeat = (kickRtm, snareRtm, hihatRtm) => {
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
@@ -191,22 +186,25 @@ function Inner() {
   });
 
 
-
   // ビート初期値
-  useEffect(() => {
+  /* useEffect(() => {
     const defaultRhythm = setBeatRhythm(beatName);
     playBeat(defaultRhythm.kick, defaultRhythm.snare, defaultRhythm.hihat);
-  }, []);
+  }, []); */
 
 
   // 再生ボタン
   let changeBeatPlay = () => {
-    if(beatPlay === "■"){
+
+    if (beatPlay === "▶︎") {
+      setBeatPlay("■");
+      setSynth();
+      const beatRhythm = setBeatRhythm(beatName);
+      playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
+      Tone.Transport.start();
+    } else if (beatPlay === "■"){
       setBeatPlay("▶︎");
       Tone.Transport.stop();
-    } else if (beatPlay === "▶︎") {
-      setBeatPlay("■");
-      Tone.Transport.start();
     }
   };
 
@@ -233,6 +231,7 @@ function Inner() {
     const hihat = beat.hihat;
 
     if(beatPlay === "■") {
+      setSynth();
       Tone.Transport.cancel();
       Tone.Transport.start();
       playBeat(kick, snare, hihat);
