@@ -4,8 +4,8 @@
 
 ## 進捗
 
+- CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 - シンセ設定のuseEffect()をなくして純粋な関数に [#5](https://github.com/ryo-i/beat-player/issues/5)
-- h1タグの削除、ReadMeの整理など [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
 

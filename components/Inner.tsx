@@ -16,7 +16,7 @@ const BeatPlayer = styled.section`
     "Helvetica Neue",
     Arial,Meiryo,
     sans-serif;
-    padding: 30px 0;
+    padding: 0;
     h1, h2, p {
       color: #fff;
       text-align: center;

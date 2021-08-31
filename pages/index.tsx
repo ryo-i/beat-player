@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Inner from '../components/Inner';
@@ -10,6 +11,10 @@ const headerText = Data.header.text;
 const pageTitle = Data.main.title;
 const pageText = Data.main.text;
 
+const Main = styled.main`
+  padding: 30px;
+  background: #333;
+`;
 
 function Home() {
   return (
@@ -21,9 +26,9 @@ function Home() {
         <meta property="og:description" content={ headerText } />
       </Head>
       <Header />
-      <main>
+      <Main>
         <Inner />
-      </main>
+      </Main>
       <Footer />
     </>
   )
