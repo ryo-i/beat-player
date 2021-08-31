@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- シンセ設定の関数をuseEffectで実行するテスト [#5](https://github.com/ryo-i/beat-player/issues/5)
+- シンセ設定のuseEffect()をなくして純粋な関数に [#5](https://github.com/ryo-i/beat-player/issues/5)
 - h1タグの削除、ReadMeの整理など [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
