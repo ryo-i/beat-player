@@ -97,23 +97,24 @@ function Inner() {
 
 
   // シンセ設定
-  let kickSynth, snareSynth, hihatSynth;
-  const setSynth = () => {
-    const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toMaster();
-    const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toMaster();
-    const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toMaster();
+  let setSynth, kickSynth, snareSynth, hihatSynth;
+  // useEffect(() => {
+    setSynth = () => {
+      const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
+      const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
+      const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
-    kickSynth = () => {
-      membraneKick.triggerAttackRelease('C0','2n');
+      kickSynth = () => {
+        membraneKick.triggerAttackRelease('C0','2n');
+      };
+      snareSynth = () => {
+        noiseSnare.triggerAttackRelease('8n');
+      };
+      hihatSynth = () => {
+        noiseHihat.triggerAttackRelease('32n');
+      };
     };
-    snareSynth = () => {
-      noiseSnare.triggerAttackRelease('8n');
-    };
-    hihatSynth = () => {
-      noiseHihat.triggerAttackRelease('32n');
-    };
-  };
-
+  // });
 
   // リズム取得
   let getRhythmData = (className) => {
@@ -175,7 +176,7 @@ function Inner() {
   // ビート再生設定
   let playBeat;
   useEffect(() => {
-  const playBeat = (kickRtm, snareRtm, hihatRtm) => {
+  playBeat = (kickRtm, snareRtm, hihatRtm) => {
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
