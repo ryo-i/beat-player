@@ -98,7 +98,7 @@ function Inner() {
 
   // シンセ設定
   let setSynth, kickSynth, snareSynth, hihatSynth;
-  // useEffect(() => {
+  useEffect(() => {
     setSynth = () => {
       const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
       const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
@@ -114,7 +114,7 @@ function Inner() {
         noiseHihat.triggerAttackRelease('32n');
       };
     };
-  // });
+  });
 
   // リズム取得
   let getRhythmData = (className) => {
