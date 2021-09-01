@@ -104,7 +104,7 @@ function Inner() {
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
-      membraneKick.triggerAttackRelease('C0','2n');
+      membraneKick.triggerAttackRelease('C0','8n');
     };
     snareSynth = () => {
       noiseSnare.triggerAttackRelease('8n');
@@ -113,6 +113,10 @@ function Inner() {
       noiseHihat.triggerAttackRelease('32n');
     };
   };
+
+  useEffect(() => {
+    setSynth();
+  });
 
 
   // リズム取得
@@ -196,15 +200,16 @@ function Inner() {
   // 再生ボタン
   let changeBeatPlay = () => {
 
+    Tone.Transport.stop();
     if (beatPlay === "▶︎") {
       setBeatPlay("■");
-      setSynth();
+      Tone.Transport.start();
+      // setSynth();
       const beatRhythm = setBeatRhythm(beatName);
       playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
-      Tone.Transport.start();
     } else if (beatPlay === "■"){
       setBeatPlay("▶︎");
-      Tone.Transport.stop();
+      // Tone.Transport.stop();
     }
   };
 
@@ -230,10 +235,11 @@ function Inner() {
     const snare = beat.snare;
     const hihat = beat.hihat;
 
+    Tone.Transport.stop();
     if(beatPlay === "■") {
-      setSynth();
       Tone.Transport.cancel();
       Tone.Transport.start();
+      // setSynth();
       playBeat(kick, snare, hihat);
     } else if (beatPlay === "▶︎") {
       Tone.Transport.cancel();
