@@ -99,6 +99,8 @@ function Inner() {
   // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
+    console.log('kickSynth->', kickSynth);
+
     const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
@@ -112,10 +114,12 @@ function Inner() {
     hihatSynth = () => {
       noiseHihat.triggerAttackRelease('32n');
     };
+
+    console.log('kickSynth->', kickSynth);
   };
 
   useEffect(() => {
-    setSynth();
+    // setSynth();
   });
 
 
@@ -177,17 +181,18 @@ function Inner() {
 
 
   // ビート再生設定
-  let playBeat;
-  useEffect(() => {
-  playBeat = (kickRtm, snareRtm, hihatRtm) => {
+  // let playBeat;
+  // useEffect(() => {
+  const playBeat = (kickRtm, snareRtm, hihatRtm) => {
+      setSynth();
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
       kickPart.loop = true;
       snarePart.loop = true;
       hihatPart.loop = true;
-    }
-  });
+  };
+  // });
 
 
   // ビート初期値
@@ -200,7 +205,7 @@ function Inner() {
   // 再生ボタン
   let changeBeatPlay = () => {
 
-    Tone.Transport.stop();
+    // Tone.Transport.stop();
     if (beatPlay === "▶︎") {
       setBeatPlay("■");
       Tone.Transport.start();
@@ -209,7 +214,7 @@ function Inner() {
       playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
     } else if (beatPlay === "■"){
       setBeatPlay("▶︎");
-      // Tone.Transport.stop();
+      Tone.Transport.stop();
     }
   };
 
@@ -235,8 +240,8 @@ function Inner() {
     const snare = beat.snare;
     const hihat = beat.hihat;
 
-    Tone.Transport.stop();
     if(beatPlay === "■") {
+      Tone.Transport.stop();
       Tone.Transport.cancel();
       Tone.Transport.start();
       // setSynth();
