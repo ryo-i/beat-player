@@ -118,10 +118,6 @@ function Inner() {
     console.log('kickSynth->', kickSynth);
   };
 
-  useEffect(() => {
-    // setSynth();
-  });
-
 
   // リズム取得
   let getRhythmData = (className) => {
@@ -181,8 +177,6 @@ function Inner() {
 
 
   // ビート再生設定
-  // let playBeat;
-  // useEffect(() => {
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
       setSynth();
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
@@ -192,26 +186,15 @@ function Inner() {
       snarePart.loop = true;
       hihatPart.loop = true;
   };
-  // });
-
-
-  // ビート初期値
-  /* useEffect(() => {
-    const defaultRhythm = setBeatRhythm(beatName);
-    playBeat(defaultRhythm.kick, defaultRhythm.snare, defaultRhythm.hihat);
-  }, []); */
 
 
   // 再生ボタン
   let changeBeatPlay = () => {
-
-    // Tone.Transport.stop();
     if (beatPlay === "▶︎") {
       setBeatPlay("■");
       Tone.Transport.stop();
       Tone.Transport.cancel();
       Tone.Transport.start();
-      // setSynth();
       const beatRhythm = setBeatRhythm(beatName);
       playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
     } else if (beatPlay === "■"){
@@ -246,7 +229,6 @@ function Inner() {
       Tone.Transport.stop();
       Tone.Transport.cancel();
       Tone.Transport.start();
-      // setSynth();
       playBeat(kick, snare, hihat);
     } else if (beatPlay === "▶︎") {
       Tone.Transport.cancel();

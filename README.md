@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- 再生ボタンにcancel処理追加 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- テスト時に書いたコメントアウトを削除 [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
