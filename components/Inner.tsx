@@ -116,7 +116,7 @@ function Inner() {
     // console.log('kickSynth->', kickSynth);
   };
   useEffect(()=> {
-    setSynth();
+    // setSynth();
   });
 
 
@@ -179,6 +179,7 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
+      setSynth();
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
