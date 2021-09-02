@@ -208,6 +208,8 @@ function Inner() {
     // Tone.Transport.stop();
     if (beatPlay === "▶︎") {
       setBeatPlay("■");
+      Tone.Transport.stop();
+      Tone.Transport.cancel();
       Tone.Transport.start();
       // setSynth();
       const beatRhythm = setBeatRhythm(beatName);
