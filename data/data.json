@@ -123,7 +123,7 @@
                 "pitchDecay": 0.001,
                 "envelope": {
                     "attack": 0.001 ,
-                    "decay": 0.5 ,
+                    "decay": 0.2 ,
                     "sustain": 0.01 ,
                     "release": 0.01
                 },
@@ -133,7 +133,7 @@
                 "value": "スネア",
                 "envelope": {
                     "attack": 0.01 ,
-                    "decay": 0.3 ,
+                    "decay": 0.2 ,
                     "sustain": 0.01
                 }
             },

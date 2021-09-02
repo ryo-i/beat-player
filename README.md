@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- シンセ設定をuseEffectで実行、他 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- キックとスネアの音の長さを短く [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
