@@ -99,8 +99,7 @@ function Inner() {
   // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
-    console.log('kickSynth->', kickSynth);
-
+    // console.log('kickSynth->', kickSynth);
     const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
@@ -114,9 +113,11 @@ function Inner() {
     hihatSynth = () => {
       noiseHihat.triggerAttackRelease('32n');
     };
-
-    console.log('kickSynth->', kickSynth);
+    // console.log('kickSynth->', kickSynth);
   };
+  useEffect(()=> {
+    setSynth();
+  });
 
 
   // リズム取得
@@ -178,7 +179,6 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-      setSynth();
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
@@ -194,12 +194,13 @@ function Inner() {
       setBeatPlay("■");
       Tone.Transport.stop();
       Tone.Transport.cancel();
-      Tone.Transport.start();
       const beatRhythm = setBeatRhythm(beatName);
       playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
+      Tone.Transport.start();
     } else if (beatPlay === "■"){
       setBeatPlay("▶︎");
       Tone.Transport.stop();
+      Tone.Transport.cancel();
     }
   };
 
@@ -216,23 +217,18 @@ function Inner() {
   const changeRythm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const getClassName: string = String(e.target.className);
     const getValue: string = String(e.target.value);
-
+    const beatRhythm = setBeatRhythm(getClassName);
     setBeatName(getClassName);
     setBeatValue(getValue);
-
-    let beat = setBeatRhythm(getClassName);
-    const kick = beat.kick;
-    const snare = beat.snare;
-    const hihat = beat.hihat;
 
     if(beatPlay === "■") {
       Tone.Transport.stop();
       Tone.Transport.cancel();
       Tone.Transport.start();
-      playBeat(kick, snare, hihat);
+      playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
     } else if (beatPlay === "▶︎") {
       Tone.Transport.cancel();
-      playBeat(kick, snare, hihat);
+      playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
     }
   }
 
