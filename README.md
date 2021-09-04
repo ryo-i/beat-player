@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- 配列から計算値に戻す & 微調整 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- キックとスネアの再生タイミングを元に戻す [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
