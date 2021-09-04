@@ -180,36 +180,22 @@ function Inner() {
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
     const kickRtmTest = [
-      "0:0.02:0",
-      "0:2.02:0"
+      "0:0.02:0"
     ];
     const snareRtmTest = [
-      "0:1.02:0",
-      "0:3.02:0"
+      "0:2.42:0"
     ];
     const hihatRtmTest = [
       "0:0:0",
-      "0:0.25:0",
-      "0:0.5:0",
-      "0:0.75:0",
-      "0:1:0",
-      "0:1.25:0",
-      "0:1.5:0",
-      "0:1.75:0",
-      "0:2:0",
-      "0:2.25:0",
-      "0:2.5:0",
-      "0:2.75:0",
-      "0:3:0",
-      "0:3.25:0",
-      "0:3.5:0",
-      "0:3.75:0"
+      "0:0.8:0",
+      "0:1.6:0",
+      "0:2.4:0"
     ];
 
       setSynth();
-      let kickPart = new Tone.Part(kickSynth, kickRtmTest).start();
-      let snarePart = new Tone.Part(snareSynth, snareRtmTest).start()
-      let hihatPart = new Tone.Part(hihatSynth, hihatRtmTest).start();
+      let kickPart = new Tone.Part(kickSynth, kickRtm).start();
+      let snarePart = new Tone.Part(snareSynth, snareRtm).start()
+      let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
       kickPart.loop = true;
       snarePart.loop = true;
       hihatPart.loop = true;
