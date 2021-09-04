@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- リズムを少数第二位で切り捨て [#5](https://github.com/ryo-i/beat-player/issues/5)
+- リズムを配列に直書きするテスト [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
