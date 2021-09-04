@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- playBeat内でシンセ設定を実行 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- キック・スネアのタイミングを少し遅らせる [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ

@@ -140,7 +140,7 @@ function Inner() {
   const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
-      rhythm.push('0:' + beatLen * Array[i] + ':0');
+      rhythm.push('0:' + (beatLen * Array[i] + 0.02) + ':0');
     }
     return rhythm;
   }
