@@ -142,7 +142,7 @@ function Inner() {
     for(let i = 0; i < Array.length ; i++) {
       // rhythm.push('0:' + beatLen * Array[i] + ':0');
       // rhythm.push('0:' + (beatLen * Array[i] + 0.02) + ':0'); // 少し遅れて再生
-      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 100) / 100 + ':0'); // 少数第二位で切り捨て
+      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 1000) / 1000 + ':0'); // 少数第3位で切り捨て
     }
     return rhythm;
   }
@@ -156,7 +156,7 @@ function Inner() {
         // 鳴らさない
       } else {
         // rhythm.push('0:' + beatLen * i + ':0');
-        rhythm.push('0:' + Math.floor(beatLen * i * 100) / 100 + ':0'); // 少数第二位で切り捨て
+        rhythm.push('0:' + Math.floor(beatLen * i * 1000) / 1000 + ':0'); // 少数第3位で切り捨て
       }
     }
     return rhythm;
@@ -199,9 +199,11 @@ function Inner() {
     ]; */
 
       setSynth();
+
       let kickPart = new Tone.Part(kickSynth, kickRtm).start();
       let snarePart = new Tone.Part(snareSynth, snareRtm).start()
       let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
+
       kickPart.loop = true;
       snarePart.loop = true;
       hihatPart.loop = true;
@@ -214,6 +216,7 @@ function Inner() {
       setBeatPlay("■");
       Tone.Transport.stop();
       Tone.Transport.cancel();
+      Tone.Transport.bpm.value = bpmRange;
       const beatRhythm = setBeatRhythm(beatName);
       playBeat(beatRhythm.kick, beatRhythm.snare, beatRhythm.hihat);
       Tone.Transport.start();

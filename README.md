@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- キックとスネアのタイミング微調整 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- 再生ボタンでBPM設定、他 [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
