@@ -122,10 +122,10 @@
                 "value": "キック",
                 "pitchDecay": 0.001,
                 "envelope": {
-                    "attack": 0.001 ,
-                    "decay": 0.2 ,
+                    "attack": 0.01 ,
+                    "decay": 0.1 ,
                     "sustain": 0.01 ,
-                    "release": 0.01
+                    "release": 0.1
                 },
                 "volume": 25
             },
@@ -133,8 +133,9 @@
                 "value": "スネア",
                 "envelope": {
                     "attack": 0.01 ,
-                    "decay": 0.2 ,
-                    "sustain": 0.01
+                    "decay": 0.15 ,
+                    "sustain": 0.01 ,
+                    "release": 0.01
                 }
             },
             "noiseHihatOpts": {
@@ -143,7 +144,8 @@
                 "envelope": {
                     "attack": 0.001 ,
                     "decay": 0.03 ,
-                    "sustain": 0
+                    "sustain": 0,
+                    "release": 0
                 }
             }
         }

@@ -141,7 +141,7 @@ function Inner() {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
       // rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 100) / 100 + ':0'); // 少数第二位で切り捨て
-      rhythm.push('0:' + (beatLen * Array[i] + 0.02) + ':0');
+      rhythm.push('0:' + (beatLen * Array[i] + 0.05) + ':0');
     }
     return rhythm;
   }
@@ -181,7 +181,7 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-    const kickRtmTest = [
+    /* const kickRtmTest = [
       "0:0.02:0"
     ];
     const snareRtmTest = [
@@ -195,12 +195,12 @@ function Inner() {
       // "0:2.4:0",
       "0:2.4000000000000004:0",
       "0:3.2:0"
-    ];
+    ]; */
 
       setSynth();
-      let kickPart = new Tone.Part(kickSynth, kickRtmTest).start();
-      let snarePart = new Tone.Part(snareSynth, snareRtmTest).start()
-      let hihatPart = new Tone.Part(hihatSynth, hihatRtmTest).start();
+      let kickPart = new Tone.Part(kickSynth, kickRtm).start();
+      let snarePart = new Tone.Part(snareSynth, snareRtm).start()
+      let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
       kickPart.loop = true;
       snarePart.loop = true;
       hihatPart.loop = true;
