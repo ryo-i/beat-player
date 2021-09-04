@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- キックとスネアの再生タイミングを元に戻す [#5](https://github.com/ryo-i/beat-player/issues/5)
+- キックとスネア小数点切り捨て & 遅れて再生 [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ

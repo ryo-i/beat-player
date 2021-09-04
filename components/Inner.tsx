@@ -140,9 +140,9 @@ function Inner() {
   const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
-      // rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 100) / 100 + ':0'); // 少数第二位で切り捨て
+      // rhythm.push('0:' + beatLen * Array[i] + ':0');
       // rhythm.push('0:' + (beatLen * Array[i] + 0.05) + ':0'); // 少し遅れて再生
-      rhythm.push('0:' + beatLen * Array[i] + ':0');
+      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.05) * 100) / 100 + ':0'); // 少数第二位で切り捨て
     }
     return rhythm;
   }
@@ -155,8 +155,8 @@ function Inner() {
       if (shaffle && i % 3 == 1) {
         // 鳴らさない
       } else {
-        // rhythm.push('0:' + Math.floor(beatLen * i * 100) / 100 + ':0'); // 少数第二位で切り捨て
-        rhythm.push('0:' + beatLen * i + ':0');
+        // rhythm.push('0:' + beatLen * i + ':0');
+        rhythm.push('0:' + Math.floor(beatLen * i * 100) / 100 + ':0'); // 少数第二位で切り捨て
       }
     }
     return rhythm;
