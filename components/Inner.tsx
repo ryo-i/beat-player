@@ -193,9 +193,9 @@ function Inner() {
     ];
 
       setSynth();
-      let kickPart = new Tone.Part(kickSynth, kickRtm).start();
-      let snarePart = new Tone.Part(snareSynth, snareRtm).start()
-      let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
+      let kickPart = new Tone.Part(kickSynth, kickRtmTest).start();
+      let snarePart = new Tone.Part(snareSynth, snareRtmTest).start()
+      let hihatPart = new Tone.Part(hihatSynth, hihatRtmTest).start();
       kickPart.loop = true;
       snarePart.loop = true;
       hihatPart.loop = true;
