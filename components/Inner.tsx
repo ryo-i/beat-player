@@ -106,6 +106,7 @@ function Inner() {
 
     kickSynth = () => {
       membraneKick.triggerAttackRelease('C0','8n');
+      // console.log('membraneKick実行')
     };
     snareSynth = () => {
       noiseSnare.triggerAttackRelease('8n');
@@ -182,31 +183,78 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-    /* const kickRtmTest = [
-      "0:0.02:0"
+    setSynth();
+
+    /*
+    // 配列直書きテスト
+    const kickRtmTest = [
+      "0:0.02:0",
+      "0:2.02:0"
     ];
     const snareRtmTest = [
-      // "0:2.42:0"
-      "0:2.4200000000000004:0"
+      "0:1.02:0",
+      "0:3.02:0"
     ];
     const hihatRtmTest = [
       "0:0:0",
-      "0:0.8:0",
-      "0:1.6:0",
-      // "0:2.4:0",
-      "0:2.4000000000000004:0",
-      "0:3.2:0"
-    ]; */
+      "0:0.333:0",
+      "0:0.5:0",
+      "0:0.833:0",
+      "0:1:0",
+      "0:1.333:0",
+      "0:1.5:0",
+      "0:1.833:0",
+      "0:2:0",
+      "0:2.333:0",
+      "0:2.5:0",
+      "0:2.833:0",
+      "0:3:0",
+      "0:3.333:0",
+      "0:3.5:0",
+      "0:3.833:0"
+    ];
 
-      setSynth();
+    let hihatPart = new Tone.Part(hihatSynth, hihatRtmTest).start();
+    let kickPart = new Tone.Part(kickSynth, kickRtmTest).start();
+    let snarePart = new Tone.Part(snareSynth, snareRtmTest).start();
+    */
 
-      let kickPart = new Tone.Part(kickSynth, kickRtm).start();
-      let snarePart = new Tone.Part(snareSynth, snareRtm).start()
-      let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
-
+    /*
+    // setTimeoutテスト
+    let hihatPart, kickPart, snarePart;
+    hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
+    hihatPart.loop = true;
+    setTimeout(() => {
+      kickPart = new Tone.Part(kickSynth, kickRtm).start();
       kickPart.loop = true;
+    }, 10);
+    setTimeout(() => {
+      snarePart = new Tone.Part(snareSynth, snareRtm).start();
       snarePart.loop = true;
-      hihatPart.loop = true;
+    }, 20);
+    */
+
+    /*
+    // async/awaitテスト
+    let kickPart, snarePart, hihatPart;
+    async function test () {
+      kickPart = await new Tone.Part(kickSynth, kickRtm).start();
+      kickPart.loop = await true;
+      snarePart = await new Tone.Part(snareSynth, snareRtm).start();
+      snarePart.loop = await true;
+      hihatPart = await new Tone.Part(hihatSynth, hihatRtm).start();
+      hihatPart.loop = await true;
+    }
+    test();
+    */
+
+    let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
+    let kickPart = new Tone.Part(kickSynth, kickRtm).start();
+    let snarePart = new Tone.Part(snareSynth, snareRtm).start();
+
+    hihatPart.loop = true;
+    kickPart.loop = true;
+    snarePart.loop = true;
   };
 
 
