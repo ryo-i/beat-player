@@ -110,7 +110,11 @@ function Inner() {
       noiseSnare.triggerAttackRelease('8n');
     };
     hihatSynth = () => {
-      noiseHihat.triggerAttackRelease('32n');
+      try {
+        noiseHihat.triggerAttackRelease('32n');
+      } catch (error) {
+        console.log('error ->', error);
+      }
     };
   };
 
@@ -174,6 +178,7 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
+
     setSynth();
 
     let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
