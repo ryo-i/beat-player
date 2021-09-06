@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState }  from 'react';
 import styled from 'styled-components';
 import Data from '../data/data.json';
 import * as Tone from 'tone';
@@ -99,14 +99,12 @@ function Inner() {
   // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
-    // console.log('kickSynth->', kickSynth);
     const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
       membraneKick.triggerAttackRelease('C0','8n');
-      // console.log('membraneKick実行')
     };
     snareSynth = () => {
       noiseSnare.triggerAttackRelease('8n');
@@ -114,11 +112,7 @@ function Inner() {
     hihatSynth = () => {
       noiseHihat.triggerAttackRelease('32n');
     };
-    // console.log('kickSynth->', kickSynth);
   };
-  useEffect(()=> {
-    // setSynth();
-  });
 
 
   // リズム取得
@@ -141,9 +135,7 @@ function Inner() {
   const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
-      // rhythm.push('0:' + beatLen * Array[i] + ':0');
-      // rhythm.push('0:' + (beatLen * Array[i] + 0.02) + ':0'); // 少し遅れて再生
-      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 1000) / 1000 + ':0'); // 少数第3位で切り捨て
+      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 1000) / 1000 + ':0');
     }
     return rhythm;
   }
@@ -156,8 +148,7 @@ function Inner() {
       if (shaffle && i % 3 == 1) {
         // 鳴らさない
       } else {
-        // rhythm.push('0:' + beatLen * i + ':0');
-        rhythm.push('0:' + Math.floor(beatLen * i * 1000) / 1000 + ':0'); // 少数第3位で切り捨て
+        rhythm.push('0:' + Math.floor(beatLen * i * 1000) / 1000 + ':0');
       }
     }
     return rhythm;
@@ -184,69 +175,6 @@ function Inner() {
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
     setSynth();
-
-    /*
-    // 配列直書きテスト
-    const kickRtmTest = [
-      "0:0.02:0",
-      "0:2.02:0"
-    ];
-    const snareRtmTest = [
-      "0:1.02:0",
-      "0:3.02:0"
-    ];
-    const hihatRtmTest = [
-      "0:0:0",
-      "0:0.333:0",
-      "0:0.5:0",
-      "0:0.833:0",
-      "0:1:0",
-      "0:1.333:0",
-      "0:1.5:0",
-      "0:1.833:0",
-      "0:2:0",
-      "0:2.333:0",
-      "0:2.5:0",
-      "0:2.833:0",
-      "0:3:0",
-      "0:3.333:0",
-      "0:3.5:0",
-      "0:3.833:0"
-    ];
-
-    let hihatPart = new Tone.Part(hihatSynth, hihatRtmTest).start();
-    let kickPart = new Tone.Part(kickSynth, kickRtmTest).start();
-    let snarePart = new Tone.Part(snareSynth, snareRtmTest).start();
-    */
-
-    /*
-    // setTimeoutテスト
-    let hihatPart, kickPart, snarePart;
-    hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
-    hihatPart.loop = true;
-    setTimeout(() => {
-      kickPart = new Tone.Part(kickSynth, kickRtm).start();
-      kickPart.loop = true;
-    }, 10);
-    setTimeout(() => {
-      snarePart = new Tone.Part(snareSynth, snareRtm).start();
-      snarePart.loop = true;
-    }, 20);
-    */
-
-    /*
-    // async/awaitテスト
-    let kickPart, snarePart, hihatPart;
-    async function test () {
-      kickPart = await new Tone.Part(kickSynth, kickRtm).start();
-      kickPart.loop = await true;
-      snarePart = await new Tone.Part(snareSynth, snareRtm).start();
-      snarePart.loop = await true;
-      hihatPart = await new Tone.Part(hihatSynth, hihatRtm).start();
-      hihatPart.loop = await true;
-    }
-    test();
-    */
 
     let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
     let kickPart = new Tone.Part(kickSynth, kickRtm).start();
