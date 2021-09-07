@@ -4,8 +4,8 @@
 
 ## 進捗
 
-- ハイハットにtry...catch文を追加 [#5](https://github.com/ryo-i/beat-player/issues/5)
-- CSS修正（背景色、余白など） [#6](https://github.com/ryo-i/beat-player/issues/6)
+- エラー表示をメッセージのみに [#5](https://github.com/ryo-i/beat-player/issues/5)
+- CSS、HTML修正（button化など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
 

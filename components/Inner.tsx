@@ -21,7 +21,7 @@ const BeatPlayer = styled.section`
       color: #fff;
       text-align: center;
     }
-    #pad {
+    .pad {
       background: #333;
       padding: 10px;
       display: flex;
@@ -29,58 +29,47 @@ const BeatPlayer = styled.section`
       flex-wrap: wrap;
       margin: 0 auto;
       position: relative;
-      font-size:30px;
-      :hover,
-      input:hover {
-        cursor: pointer;
+      .beat {
+        margin: 5px;
+        background: #666;
+        border: 0px solid #333;
+        width: 100px;
+        height: 100px;
+        font-family: inherit;
+        font-size:30px;
+        line-height: 100px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+        color: #fff;
+        box-shadow: 5px 5px 5px rgba(0,0,0, 0.3);
+        :hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
       }
     }
-    li {
-      margin: 5px;
-      background: #666;
-      border: 0px solid #333;
-      width: 100px;
-      height: 100px;
-      line-height: 100px;
-      border-radius: 5px;
-      text-align: center;
-      display: inline-block;
-      color: #fff;
-      box-shadow: 5px 5px 5px rgba(0,0,0, 0.3);
-      :hover {
-        opacity: 0.7;
-      }
-    }
-    .b_key {
-      position: absolute;
-      z-index: 10;
-      top: 10px;
-      margin: 0 -20px;
-      padding: 0;
-      background: #000;
-      border: 1px solid #fff;
-      color: #fff;
-      width: 35px;
-      height: 75px;
-      text-align: center;
-      display: inline-block;
-    }
-    .range {
-      max-width: 300px;
-      width: 100%;
-      margin: 0 auto;
-      }
     .setting {
       text-align: center;
       color: #fff;
-      max-width: 300px;
+      max-width: 350px;
       width: 100%;
       margin: 0 auto;
-      label {
-        display: inline-block;
+      .range {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+        :hover {
+          cursor: pointer;
+        }
       }
-      input {
-        margin-bottom: 15px;
+      label {
+        margin: 0 3px 10px 0;
+        display: inline-block;
+        :hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -113,7 +102,7 @@ function Inner() {
       try {
         noiseHihat.triggerAttackRelease('32n');
       } catch (error) {
-        console.log('error ->', error);
+        console.log('error ->', error.message);
       }
     };
   };
@@ -178,7 +167,6 @@ function Inner() {
 
   // ビート再生設定
   const playBeat = (kickRtm, snareRtm, hihatRtm) => {
-
     setSynth();
 
     let hihatPart = new Tone.Part(hihatSynth, hihatRtm).start();
@@ -242,8 +230,8 @@ function Inner() {
     <>
       <BeatPlayer>
         <h1>Beat Player</h1>
-        <ul id="pad">
-          <li id="beat" onClick={changeBeatPlay}>{beatPlay}</li>
+        <ul className="pad">
+          <button className="beat" type="button" onClick={changeBeatPlay}>{beatPlay}</button>
         </ul>
         <div className="setting">
           <section className="bpm">
