@@ -131,6 +131,7 @@
             },
             "noiseSnareOpts": {
                 "value": "スネア",
+                "type": "white",
                 "envelope": {
                     "attack": 0.01 ,
                     "decay": 0.15 ,

@@ -93,6 +93,15 @@ function Inner() {
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
+      /*
+      const freqEnv = new Tone.FrequencyEnvelope({
+        attack: 0.2,
+        baseFrequency: "C2",
+        octaves: -2
+      });
+      freqEnv.connect(membraneKick.frequency);
+      freqEnv.triggerAttack();
+      */
       membraneKick.triggerAttackRelease('C0','8n');
     };
     snareSynth = () => {
@@ -128,7 +137,7 @@ function Inner() {
   const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
-      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.02) * 1000) / 1000 + ':0');
+      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.01) * 1000) / 1000 + ':0');
     }
     return rhythm;
   }
