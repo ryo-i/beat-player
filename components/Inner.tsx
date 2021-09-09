@@ -88,28 +88,23 @@ function Inner() {
   // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
-    const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
+    // const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
-      /*
-      const freqEnv = new Tone.FrequencyEnvelope({
-        attack: 0.2,
-        baseFrequency: "C2",
-        octaves: -2
-      });
-      freqEnv.connect(membraneKick.frequency);
-      freqEnv.triggerAttack();
-      */
-      membraneKick.triggerAttackRelease('C0','8n');
+      const osc = new Tone.Oscillator().toDestination();
+      osc.frequency.value = 'C4';
+      osc.frequency.rampTo('C0', '0.2');
+      osc.start().stop('+0.5');
+      // membraneKick.triggerAttackRelease('C0','3');
     };
     snareSynth = () => {
-      noiseSnare.triggerAttackRelease('8n');
+      noiseSnare.triggerAttackRelease('0.3');
     };
     hihatSynth = () => {
       try {
-        noiseHihat.triggerAttackRelease('32n');
+        noiseHihat.triggerAttackRelease('0.1');
       } catch (error) {
         console.log('error ->', error.message);
       }

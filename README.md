@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- FrequencyEnvelopeなどの検討中 [#9](https://github.com/ryo-i/beat-player/issues/9)
+- osc.frequencyでキック音作成（プツ音あり） [#9](https://github.com/ryo-i/beat-player/issues/9)
 - エラー表示をメッセージのみに [#5](https://github.com/ryo-i/beat-player/issues/5)
 - CSS、HTML修正（button化など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
