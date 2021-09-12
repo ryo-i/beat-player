@@ -4,8 +4,7 @@
 
 ## 進捗
 
-- キック、スネア、ハイハットを同時にしてみる [#9](https://github.com/ryo-i/beat-player/issues/9)
-- エラー表示をメッセージのみに [#5](https://github.com/ryo-i/beat-player/issues/5)
+- Aboutページ作成中 [#8](https://github.com/ryo-i/beat-player/issues/8)
 - CSS、HTML修正（button化など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 ## ブログ
