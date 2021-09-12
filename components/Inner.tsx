@@ -88,21 +88,15 @@ function Inner() {
   // シンセ設定
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
-    // const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
     const synthKick = new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination();
     const synthSnare = new Tone.Synth(innerJson.synthParam.synthSnareOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
-      // const osc = new Tone.Oscillator().toDestination();
-      // osc.start().stop('+0.5');
-
       synthKick.oscillator.type = "sine";
       synthKick.frequency.rampTo('C0', '0.1');
       synthKick.triggerAttackRelease('C4', '0.5');
-
-      // membraneKick.triggerAttackRelease('C0','3');
     };
     snareSynth = () => {
       synthSnare.oscillator.type = "sine";
@@ -140,7 +134,7 @@ function Inner() {
   const setRhythm = (beatLen, Array) => {
     let rhythm = [];
     for(let i = 0; i < Array.length ; i++) {
-      rhythm.push('0:' + Math.floor((beatLen * Array[i] + 0.01) * 1000) / 1000 + ':0');
+      rhythm.push('0:' + Math.floor((beatLen * Array[i]) * 1000) / 1000 + ':0');
     }
     return rhythm;
   }
