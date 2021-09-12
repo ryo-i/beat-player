@@ -129,6 +129,16 @@
                 },
                 "volume": 30
             },
+            "synthKickOpts": {
+                "value": "キック",
+                "envelope": {
+                    "attack": 0.01 ,
+                    "decay": 0.5 ,
+                    "sustain": 0.01 ,
+                    "release": 0.1
+                },
+                "volume": 2
+            },
             "noiseSnareOpts": {
                 "value": "スネア",
                 "type": "white",

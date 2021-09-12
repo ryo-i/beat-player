@@ -89,14 +89,18 @@ function Inner() {
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
     // const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
+    const synth = new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
     kickSynth = () => {
-      const osc = new Tone.Oscillator().toDestination();
-      osc.frequency.value = 'C4';
-      osc.frequency.rampTo('C0', '0.2');
-      osc.start().stop('+0.5');
+      // const osc = new Tone.Oscillator().toDestination();
+      // osc.start().stop('+0.5');
+
+      synth.oscillator.type = "sine";
+      synth.frequency.rampTo('C0', '0.1');
+      synth.triggerAttackRelease('C4', '0.5');
+
       // membraneKick.triggerAttackRelease('C0','3');
     };
     snareSynth = () => {
