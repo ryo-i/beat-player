@@ -132,21 +132,31 @@
             "synthKickOpts": {
                 "value": "キック",
                 "envelope": {
-                    "attack": 0.01 ,
+                    "attack": 0 ,
                     "decay": 0.5 ,
-                    "sustain": 0.01 ,
-                    "release": 0.1
+                    "sustain": 0 ,
+                    "release": 0
                 },
                 "volume": 2
+            },
+            "synthSnareOpts": {
+                "value": "スネア",
+                "envelope": {
+                    "attack": 0 ,
+                    "decay": 0.2 ,
+                    "sustain": 0 ,
+                    "release": 0
+                },
+                "volume": -10
             },
             "noiseSnareOpts": {
                 "value": "スネア",
                 "type": "white",
                 "envelope": {
-                    "attack": 0.01 ,
-                    "decay": 0.15 ,
-                    "sustain": 0.01 ,
-                    "release": 0.01
+                    "attack": 0 ,
+                    "decay": 0.4 ,
+                    "sustain": 0 ,
+                    "release": 0
                 },
                 "volume": 0
             },
@@ -154,7 +164,7 @@
                 "value": "ハイハット",
                 "type": "brown",
                 "envelope": {
-                    "attack": 0.001 ,
+                    "attack": 0 ,
                     "decay": 0.03 ,
                     "sustain": 0,
                     "release": 0

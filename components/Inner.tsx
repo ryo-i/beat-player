@@ -89,7 +89,8 @@ function Inner() {
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
     // const membraneKick = new Tone.MembraneSynth(innerJson.synthParam.membraneKickOpts).toDestination();
-    const synth = new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination();
+    const synthKick = new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination();
+    const synthSnare = new Tone.Synth(innerJson.synthParam.synthSnareOpts).toDestination();
     const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
     const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
 
@@ -97,14 +98,17 @@ function Inner() {
       // const osc = new Tone.Oscillator().toDestination();
       // osc.start().stop('+0.5');
 
-      synth.oscillator.type = "sine";
-      synth.frequency.rampTo('C0', '0.1');
-      synth.triggerAttackRelease('C4', '0.5');
+      synthKick.oscillator.type = "sine";
+      synthKick.frequency.rampTo('C0', '0.1');
+      synthKick.triggerAttackRelease('C4', '0.5');
 
       // membraneKick.triggerAttackRelease('C0','3');
     };
     snareSynth = () => {
-      noiseSnare.triggerAttackRelease('0.3');
+      synthSnare.oscillator.type = "sine";
+      synthSnare.triggerAttackRelease('G3', '0.5');
+
+      noiseSnare.triggerAttackRelease('0.5');
     };
     hihatSynth = () => {
       try {
