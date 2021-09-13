@@ -100,8 +100,7 @@ function Inner() {
     };
     snareSynth = () => {
       synthSnare.oscillator.type = "sine";
-      synthSnare.triggerAttackRelease('G3', '0.5');
-
+      synthSnare.triggerAttackRelease('F4', '0.5');
       noiseSnare.triggerAttackRelease('0.5');
     };
     hihatSynth = () => {
