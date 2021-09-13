@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- スネアのアタック音のピッチを変更 [#5](https://github.com/ryo-i/beat-player/issues/5)
+- スネアのアタック音のピッチを変更 [#9](https://github.com/ryo-i/beat-player/issues/9)
 - 課題を追記 [#8](https://github.com/ryo-i/beat-player/issues/8)
 - CSS、HTML修正（button化など） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
