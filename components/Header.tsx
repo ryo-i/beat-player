@@ -3,6 +3,7 @@ import Data from '../data/data.json';
 import styled from 'styled-components';
 import { pageSize } from '../styles/mixin';
 import cssVariables from '../styles/variables.json';
+import * as Tone from 'tone';
 
 
 const variable = cssVariables.variable;
@@ -27,6 +28,13 @@ const HeaderTag = styled.header`
 `;
 
 
+// 再生停止
+let stopBeatPlay = () => {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+};
+
+
 // Component
 function Header() {
   return (
@@ -37,7 +45,7 @@ function Header() {
         <nav>
           <span>MENU:</span>
           <Link href="/"><a>Home</a></Link>
-          <Link href="/about"><a>About</a></Link>
+          <Link href="/about"><a onClick={stopBeatPlay}>About</a></Link>
         </nav>
       </div>
     </HeaderTag>
