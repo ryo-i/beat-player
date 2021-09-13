@@ -18,7 +18,7 @@ const Main = styled.main`
     }
     h2 {
         background: #eee;
-        margin: 60px 0 0;
+        margin: 60px 0 20px;
         padding: 10px;
         border-radius: 3px;
     }
@@ -196,8 +196,14 @@ function About() {
                         <img src="img/beat32.jpg" alt="32拍子" />
                     </figure>
                 </section>
-                <p>※参考：<a href="https://www.i-ryo.com/entry/2020/05/31/194741">【Tone.js】Tone.Part()でいろいろなリズムを鳴らす ※1〜8拍子編</a></p>
-                <p>※参考：<a href="https://www.i-ryo.com/entry/2020/06/08/060621">【Tone.js】Tone.Part()でいろいろなリズムを鳴らす ※12〜32拍子&シャッフル編</a></p>
+                <p>※参考：<a href="https://www.i-ryo.com/entry/2020/05/31/194741">【Tone.js】Tone.Part()でいろいろなリズムを鳴らす ※1〜8拍子編 - クモのようにコツコツと</a></p>
+                <p>※参考：<a href="https://www.i-ryo.com/entry/2020/06/08/060621">【Tone.js】Tone.Part()でいろいろなリズムを鳴らす ※12〜32拍子&シャッフル編 - クモのようにコツコツと</a></p>
+            </section>
+            <section>
+                <h2>課題</h2>
+                <p>2021/09/14現在、ハイハットの音がズレるという課題が残っている。特に「はねた16ビート」が顕著に感じる。「チッキチッキチッキチッキ」がたまに「チキッチキッチキッチキッ」みたいな感じにズレる。</p>
+                <p>この問題はCodePen時代はあまり起こっていなかったため、Tone.jsとReact/Next.jsとの相性の問題かもしれない。</p>
+                <p>※参考：<a href="https://www.i-ryo.com/entry/2020/06/20/055657">【Tone.js】いろいろなリズムが鳴らせるビート・プレイヤーを作った（BPM切り替え可能） - クモのようにコツコツと</a></p>
             </section>
             <section>
                 <h2>詳細</h2>
