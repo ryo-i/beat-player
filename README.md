@@ -4,7 +4,7 @@
 
 ## 進捗
 
-- 不要なデータを削除 [#6](https://github.com/ryo-i/beat-player/issues/6)
+- コメント追加 [#6](https://github.com/ryo-i/beat-player/issues/6)
 - スネアのアタック音のピッチを変更 [#9](https://github.com/ryo-i/beat-player/issues/9)
 - 課題を追記 [#8](https://github.com/ryo-i/beat-player/issues/8)
 

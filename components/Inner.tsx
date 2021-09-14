@@ -7,6 +7,7 @@ import * as Tone from 'tone';
 const innerJson = Data.inner;
 
 
+// CSS in JS
 const BeatPlayer = styled.section`
   {
     background: #333;
