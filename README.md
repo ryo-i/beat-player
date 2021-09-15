@@ -1,14 +1,19 @@
 # ビートプレイヤー
 
-以前Tone.jsを使って作ったビートプレイヤーをReactでつくりなおしたい。
+以前Tone.jsを使ってCodePen上に作ったビートプレイヤーをReactでつくりなおした。
 
 ## 進捗
 
-- コードの内容をブログ記事でまとめている
 - コメント追加 [#6](https://github.com/ryo-i/beat-player/issues/6)
 - 課題を追記 [#8](https://github.com/ryo-i/beat-player/issues/8)
 
 ## ブログ
+
+Reactアプリ版
+
+※参考：[【React & Tone.js】ビートプレイヤーを作った（ビートとBPMを変更可能）](https://www.i-ryo.com/entry/2021/09/16/072438)
+
+本アプリの元になったCodePen版
 
 ※参考：[【Tone.js】いろいろなリズムが鳴らせるビート・プレイヤーを作った（BPM切り替え可能）](https://www.i-ryo.com/entry/2020/06/20/055657)
 
