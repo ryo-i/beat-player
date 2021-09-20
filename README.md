@@ -4,6 +4,7 @@
 
 ## 進捗
 
+- Aboutページで音を止める処理をルーティングイベントに変更 [#10](https://github.com/ryo-i/beat-player/issues/10)
 - url修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 

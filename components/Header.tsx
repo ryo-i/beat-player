@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Router from 'next/router';
 import Data from '../data/data.json';
 import styled from 'styled-components';
 import { pageSize } from '../styles/mixin';
@@ -29,10 +30,14 @@ const HeaderTag = styled.header`
 
 
 // 再生停止
-let stopBeatPlay = () => {
-  Tone.Transport.stop();
-  Tone.Transport.cancel();
+const stopBeatPlay = (url) => {
+  // console.log('App is changing to: ', url);
+  if (url === '/about') {
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+  }
 };
+Router.events.on('routeChangeStart', stopBeatPlay);
 
 
 // Component
@@ -45,7 +50,7 @@ function Header() {
         <nav>
           <span>MENU:</span>
           <Link href="/"><a>Home</a></Link>
-          <Link href="/about"><a onClick={stopBeatPlay}>About</a></Link>
+          <Link href="/about"><a>About</a></Link>
         </nav>
       </div>
     </HeaderTag>
