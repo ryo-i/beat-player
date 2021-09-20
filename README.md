@@ -2,13 +2,16 @@
 
 以前Tone.jsを使ってCodePen上に作ったビートプレイヤーをReactでつくりなおした。
 
+## 作ったもの
+
+※参考：[ビートプレイヤー](https://beat-player.vercel.app/)
+
 ## 進捗
 
-- Aboutページで音を止める処理をルーティングイベントに変更 [#10](https://github.com/ryo-i/beat-player/issues/10)
-- url修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
+- ReadMe修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 
-## ブログ
+## 詳細ブログ
 
 Reactアプリ版
 
@@ -17,7 +20,3 @@ Reactアプリ版
 本アプリの元になったCodePen版
 
 ※参考：[【Tone.js】いろいろなリズムが鳴らせるビート・プレイヤーを作った（BPM切り替え可能）](https://www.i-ryo.com/entry/2020/06/20/055657)
-
-## プレビュー
-
-※参考：[ビートプレイヤー](https://beat-player.vercel.app/)
