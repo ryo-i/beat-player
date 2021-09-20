@@ -6,12 +6,12 @@
 
 ※参考：[ビートプレイヤー](https://beat-player.vercel.app/)
 
-## 進捗
+## 進捗（コミット）
 
 - ReadMe修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 
-## 詳細ブログ
+## 詳細（ブログ）
 
 Reactアプリ版
 
