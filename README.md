@@ -4,8 +4,8 @@
 
 ## 進捗
 
-- コメント追加 [#6](https://github.com/ryo-i/beat-player/issues/6)
-- 課題を追記 [#8](https://github.com/ryo-i/beat-player/issues/8)
+- url修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
+
 
 ## ブログ
 
