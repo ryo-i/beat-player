@@ -8,7 +8,7 @@
 
 ## 進捗（コミット）
 
-- ReadMe修正 [#6](https://github.com/ryo-i/beat-player/issues/6)
+- Aboutにリンク追加 [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 
 ## 詳細（ブログ）

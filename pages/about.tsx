@@ -209,11 +209,11 @@ function About() {
                 <h2>詳細</h2>
                 <section>
                     <h3>ブログ</h3>
-                    <p><a href="https://www.i-ryo.com/entry/xxxx">タイトル - クモのようにコツコツと</a></p>
+                    <p><a href="https://www.i-ryo.com/entry/2021/09/16/072438">【React & Tone.js】ビートプレイヤーを作った（ビートとBPMを変更可能） - クモのようにコツコツと</a></p>
                 </section>
                 <section>
                     <h3>ソースコード（GitHub）</h3>
-                    <p><a href="https://github.com/ryo-i/xxxxx">リポジトリ</a></p>
+                    <p><a href="https://github.com/ryo-i/beat-player">リポジトリ</a></p>
                 </section>
             </section>
             <Profile />
