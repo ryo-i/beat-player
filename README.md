@@ -8,7 +8,7 @@
 
 ## 進捗（コミット）
 
-- シンセ設定をフック化は諦めて元に戻す [#6](https://github.com/ryo-i/beat-player/issues/6)
+- 「ビートの種類」を別ページに分離 [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 
 ## 詳細（ブログ）

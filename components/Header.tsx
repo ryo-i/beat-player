@@ -32,7 +32,7 @@ const HeaderTag = styled.header`
 // 再生停止
 const stopBeatPlay = (url) => {
   // console.log('App is changing to: ', url);
-  if (url === '/about') {
+  if (url !== '/') {
     Tone.Transport.stop();
     Tone.Transport.cancel();
   }
@@ -51,6 +51,7 @@ function Header() {
           <span>MENU:</span>
           <Link href="/"><a>Home</a></Link>
           <Link href="/about"><a>About</a></Link>
+          <Link href="/beat_type"><a>Beat Type</a></Link>
         </nav>
       </div>
     </HeaderTag>
