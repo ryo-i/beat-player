@@ -8,7 +8,7 @@
 
 ## 進捗（コミット）
 
-- Aboutにリンク追加 [#6](https://github.com/ryo-i/beat-player/issues/6)
+- シンセ設定をフック化しuseEffectで実行（テスト） [#6](https://github.com/ryo-i/beat-player/issues/6)
 
 
 ## 詳細（ブログ）

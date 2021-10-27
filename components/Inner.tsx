@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import styled from 'styled-components';
 import Data from '../data/data.json';
 import * as Tone from 'tone';
@@ -80,6 +80,10 @@ const BeatPlayer = styled.section`
 // Component
 function Inner() {
   // Hooks
+  const [synthKick, setSynthKick] = useState(null);
+  const [synthSnare, setSynthSnare] = useState(null);
+  const [noiseSnare, setNoiseSnare] = useState(null);
+  const [noiseHihat, setNoiseHihat] = useState(null);
   const [beatPlay, setBeatPlay] = useState(innerJson.settings.beatPlay);
   const [bpmRange, setBpmRange] = useState(innerJson.settings.bpm);
   const [beatName, setBeatName] = useState(innerJson.settings.beatName);
@@ -87,13 +91,17 @@ function Inner() {
 
 
   // シンセ設定
+  // let kickSynth, snareSynth, hihatSynth;
+  useEffect(() => {
+      setSynthKick(new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination());
+      setSynthSnare(new Tone.Synth(innerJson.synthParam.synthSnareOpts).toDestination());
+      setNoiseSnare(new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination());
+      setNoiseHihat(new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination());
+  },[]);
+
+
   let kickSynth, snareSynth, hihatSynth;
   const setSynth = () => {
-    const synthKick = new Tone.Synth(innerJson.synthParam.synthKickOpts).toDestination();
-    const synthSnare = new Tone.Synth(innerJson.synthParam.synthSnareOpts).toDestination();
-    const noiseSnare = new Tone.NoiseSynth(innerJson.synthParam.noiseSnareOpts).toDestination();
-    const noiseHihat = new Tone.NoiseSynth(innerJson.synthParam.noiseHihatOpts).toDestination();
-
     kickSynth = () => {
       synthKick.oscillator.type = "sine";
       synthKick.frequency.rampTo('C0', '0.1');
